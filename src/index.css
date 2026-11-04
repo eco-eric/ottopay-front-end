@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 173 80% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 175 84% 32%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 210 15% 93%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 173 40% 92%;
+    --accent-foreground: 173 80% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 173 80% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 173 80% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 40% 92%;
+    --sidebar-accent-foreground: 173 80% 25%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 173 80% 40%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 173 80% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 175 84% 38%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 173 30% 18%;
+    --accent-foreground: 173 50% 70%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 80% 50%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 173 80% 45%;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 173 80% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 30% 18%;
+    --sidebar-accent-foreground: 173 50% 70%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 173 80% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Force light mode on print/PDF source elements */
+.force-light-mode {
+  --background: 210 20% 98%;
+  --foreground: 220 20% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 10%;
+  --primary: 173 80% 40%;
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 175 84% 32%;
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 220 20% 20%;
+  --muted: 210 15% 93%;
+  --muted-foreground: 220 10% 46%;
+  --accent: 173 40% 92%;
+  --accent-foreground: 173 80% 25%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 217 91% 60%;
+  --info-foreground: 0 0% 100%;
+  --border: 214 20% 88%;
+  --input: 214 20% 88%;
+  --ring: 173 80% 40%;
+}
+
+/* Print styles for PDF generation */
+/* Page-break rules applied always so jsPDF html() respects them */
+.print-target .print-terms {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.print-target .print-totals {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.print-target .print-table-row {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.print-target .print-terms p,
+.print-target .print-terms li {
+  orphans: 3;
+  widows: 3;
+}
+
+@media print {
+  /* Hide all app chrome */
+  nav, header, aside, footer, .no-print,
+  [data-sidebar], .mobile-nav, .bottom-nav,
+  button, .btn, [role="button"],
+  .sheet-overlay, .dialog-overlay {
+    display: none !important;
+  }
+
+  /* Reset page */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* The print target fills the page */
+  .print-target {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    page-break-inside: avoid;
+  }
+
+  /* Document header: logo + business info side by side */
+  .print-doc-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 24pt !important;
+    padding-bottom: 12pt !important;
+    border-bottom: 2pt solid #0D9488 !important;
+  }
+
+  /* Keep logo visible */
+  .print-doc-header img {
+    display: block !important;
+    max-height: 60pt !important;
+    object-fit: contain !important;
+  }
+
+  /* Line items table */
+  .print-target table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 16pt !important;
+    font-size: 10pt !important;
+  }
+
+  .print-target th {
+    background-color: #f1f5f9 !important;
+    padding: 6pt 8pt !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+    border-bottom: 1pt solid #cbd5e1 !important;
+  }
+
+  .print-target td {
+    padding: 6pt 8pt !important;
+    border-bottom: 0.5pt solid #e2e8f0 !important;
+    vertical-align: top !important;
+  }
+
+  /* Totals block */
+  .print-totals {
+    width: 240pt !important;
+    margin-left: auto !important;
+    margin-bottom: 16pt !important;
+  }
+
+  .print-totals .total-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 3pt 0 !important;
+    font-size: 10pt !important;
+  }
+
+  .print-totals .total-final {
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    color: #0D9488 !important;
+    border-top: 1.5pt solid #0D9488 !important;
+    padding-top: 6pt !important;
+    margin-top: 4pt !important;
+  }
+
+  /* Terms & Conditions and Payment Terms sections */
+  .print-terms {
+    margin-top: 16pt !important;
+    padding-top: 12pt !important;
+    border-top: 0.5pt solid #e2e8f0 !important;
+    font-size: 9pt !important;
+    color: #475569 !important;
+  }
+
+  .print-terms h4 {
+    font-size: 8pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #94a3b8 !important;
+    margin-bottom: 4pt !important;
+    font-weight: 600 !important;
+  }
+
+  /* Document footer */
+  .print-doc-footer {
+    margin-top: 24pt !important;
+    padding-top: 10pt !important;
+    border-top: 0.5pt solid #e2e8f0 !important;
+    font-size: 8pt !important;
+    color: #94a3b8 !important;
+    text-align: center !important;
+  }
+
+  /* Avoid page breaks inside key sections */
+  .print-totals,
+  .print-terms,
+  .print-doc-header {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Repeat table column headers on every printed page */
+  .print-items-table thead {
+    display: table-header-group !important;
+  }
+
+  .print-items-table tbody {
+    display: table-row-group !important;
+  }
+
+  /* Give the thead a subtle top border when it repeats on page 2+ */
+  .print-items-table thead tr {
+    background-color: #f8fafc !important;
+    border-top: 1pt solid #e2e8f0 !important;
+  }
+
+  /* Never break a single line item row across pages */
+  .print-table-row {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Keep totals from orphaning on their own page */
+  .print-totals {
+    page-break-before: avoid !important;
+  }
+
+  /* Watermark faint on print */
+  .print-watermark {
+    opacity: 0.06 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    margin: 0.65in 0.65in 0.75in 0.65in;
+    size: letter portrait;
+  }
+}
