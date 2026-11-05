@@ -1,0 +1,423 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+type Cell = true | false | string;
+const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team: Cell }[] }[] = [
+  {
+    group: 'Invoicing and estimates',
+    items: [
+      { label: 'Invoices and estimates', free: 'Unlimited', pro: 'Unlimited', team: 'Unlimited' },
+      { label: 'Send by text and email', free: true, pro: true, team: true },
+      { label: 'Your logo, colors and terms', free: true, pro: true, team: true },
+      { label: 'Photo attachments on the PDF', free: true, pro: true, team: true },
+      { label: 'Customer accepts estimates online', free: true, pro: true, team: true },
+      { label: 'Estimate to invoice in one tap', free: true, pro: true, team: true },
+      { label: 'Know when the customer opens it', free: false, pro: true, team: true },
+      { label: 'Late charges applied automatically', free: false, pro: true, team: true },
+    ],
+  },
+  {
+    group: 'Getting paid',
+    items: [
+      { label: 'Record cash, check, Zelle and ACH by hand', free: true, pro: true, team: true },
+      { label: 'Card and ACH payments through your own Stripe account', free: false, pro: true, team: true },
+      { label: 'Pay-by-link on every invoice', free: false, pro: true, team: true },
+      { label: 'Charge a card on-site', free: false, pro: true, team: true },
+      { label: 'Add a processing charge so the customer covers the card fee', free: false, pro: true, team: true },
+      { label: 'Partial payments and deposits', free: true, pro: true, team: true },
+      { label: 'Branded receipt sent on payment', free: false, pro: true, team: true },
+      { label: 'Automated payment reminders', free: false, pro: true, team: true },
+    ],
+  },
+  {
+    group: 'Customers and jobs',
+    items: [
+      { label: 'Customer records with history', free: 'Unlimited', pro: 'Unlimited', team: 'Unlimited' },
+      { label: 'Equipment tracking per address', free: true, pro: true, team: true },
+      { label: 'Jobs, expenses and receipts', free: true, pro: true, team: true },
+      { label: 'Parts and services catalog with markup', free: true, pro: true, team: true },
+      { label: 'WorkEdge Pro job and photo sync', free: false, pro: true, team: true },
+    ],
+  },
+  {
+    group: 'Otto AI',
+    items: [
+      { label: 'Describe the job, Otto writes the line items', free: false, pro: true, team: true },
+      { label: 'Estimate builder from plain-English notes', free: false, pro: true, team: true },
+      { label: 'Receipt scanner that logs the expense', free: false, pro: true, team: true },
+      { label: 'Photo of a part becomes a catalog item', free: false, pro: true, team: true },
+      { label: 'Daily summary of what needs your attention', free: false, pro: true, team: true },
+    ],
+  },
+  {
+    group: 'Team and reports',
+    items: [
+      { label: 'People on the account', free: '1', pro: '2', team: '5, then $15 per seat' },
+      { label: 'Revenue, tax and expense reports', free: 'Basic', pro: true, team: true },
+      { label: 'CSV export for your accountant', free: true, pro: true, team: true },
+      { label: 'Works offline, syncs later', free: true, pro: true, team: true },
+    ],
+  },
+];
+---
+
+<Base
+  title="OttoPay Pricing — Free, Pro and Team plans"
+  description="Start free with unlimited invoices and estimates. Add card payments, Otto AI and automatic reminders on Pro. No per-invoice fees, no percentage on your payments."
+>
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <h1>Simple plans. No cut of your payments.</h1>
+        <p class="lede">Start free and get organized. Move to Pro when you want customers paying by card from the invoice. Card processing is between you and Stripe at Stripe's standard rate; OttoPay never adds a percentage.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan">
+          <h2>Free</h2>
+          <div class="price">$0</div>
+          <p class="plan-who">For getting off paper. Unlimited invoices and estimates, recorded payments, customer and equipment records.</p>
+          <a class="btn btn-secondary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+          <ul class="checklist">
+            <li><Icon name="check" size={20} />Unlimited invoices and estimates</li>
+            <li><Icon name="check" size={20} />Text and email delivery</li>
+            <li><Icon name="check" size={20} />Record cash, check and bank payments</li>
+            <li><Icon name="check" size={20} />Customers, equipment, jobs, expenses</li>
+            <li><Icon name="check" size={20} />Works offline</li>
+          </ul>
+        </div>
+
+        <div class="plan plan-hi">
+          <div class="tag">Most contractors</div>
+          <h2>Pro</h2>
+          <div class="price">$29<span>/mo</span></div>
+          <p class="price-alt">or $24/mo paid yearly ($288)</p>
+          <p class="plan-who">For the owner-operator who wants to get paid on the spot. Everything in Free, plus:</p>
+          <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup&plan=pro">Start with Pro</a>
+          <ul class="checklist">
+            <li><Icon name="check" size={20} />Card and ACH payments through your own Stripe account</li>
+            <li><Icon name="check" size={20} />Pay-by-link and on-site card charges</li>
+            <li><Icon name="check" size={20} />Otto AI: line items, estimates, receipts</li>
+            <li><Icon name="check" size={20} />Automated reminders and receipts</li>
+            <li><Icon name="check" size={20} />WorkEdge Pro sync</li>
+            <li><Icon name="check" size={20} />Two people on the account</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h2>Team</h2>
+          <div class="price">$79<span>/mo</span></div>
+          <p class="price-alt">or $66/mo paid yearly ($792)</p>
+          <p class="plan-who">For a shop with a crew in the field. Everything in Pro, for five people, on one set of books.</p>
+          <a class="btn btn-secondary" href="https://app.ottopay.pro/auth?mode=signup&plan=team">Start with Team</a>
+          <ul class="checklist">
+            <li><Icon name="check" size={20} />Five people included, $15/mo per extra seat</li>
+            <li><Icon name="check" size={20} />Every tech invoices from the field</li>
+            <li><Icon name="check" size={20} />One ledger, one tax report</li>
+            <li><Icon name="check" size={20} />Team member profiles and permissions</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="fineprint">Prices in USD. Change or cancel any time; your invoices and customers stay yours on every plan.</p>
+    </div>
+  </section>
+
+  <!-- Payments explained -->
+  <section class="section mint">
+    <div class="container pay-grid">
+      <div>
+        <h2>How card payments work</h2>
+        <p class="lede" style="margin-top:16px">OttoPay connects to a Stripe account that belongs to you. When a customer pays, the money goes from their card to your Stripe account to your bank. OttoPay is never in the middle and never takes a percentage.</p>
+      </div>
+      <ul class="pay-list">
+        <li>
+          <Icon name="banknote" />
+          <div>
+            <strong>Stripe's standard rate, nothing on top</strong>
+            <p>You pay Stripe's published card rate on each payment, the same as any business using Stripe directly. We don't mark it up.</p>
+          </div>
+        </li>
+        <li>
+          <Icon name="calculator" />
+          <div>
+            <strong>Let the customer cover the card fee</strong>
+            <p>Turn on the processing charge and invoices show one clean total that includes it. Paying cash? Tap once to show the base price.</p>
+          </div>
+        </li>
+        <li>
+          <Icon name="shield" />
+          <div>
+            <strong>Your account, your money</strong>
+            <p>Payouts go straight to your bank on Stripe's schedule. If you ever leave OttoPay, your Stripe account comes with you.</p>
+          </div>
+        </li>
+        <li>
+          <Icon name="home" />
+          <div>
+            <strong>Financing for bigger jobs</strong>
+            <p>Once your Stripe account qualifies, you can offer Klarna, Affirm and Afterpay on the invoice. The customer pays over time; you're paid in full up front.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Every feature, by plan</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Free</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Team</th>
+            </tr>
+          </thead>
+          {rows.map((g) => (
+            <tbody>
+              <tr class="group"><th scope="rowgroup" colspan="4">{g.group}</th></tr>
+              {g.items.map((r) => (
+                <tr>
+                  <td>{r.label}</td>
+                  {[r.free, r.pro, r.team].map((c) => (
+                    <td class="cell">
+                      {c === true ? <Icon name="check" size={20} class="yes" /> : c === false ? <Icon name="minus" size={20} class="no" /> : <span>{c}</span>}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section dark">
+    <div class="container faq">
+      <h2>Questions contractors ask</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Why a monthly plan instead of free with a fee on each payment?</summary>
+          <p>A percentage fee punishes you for doing well: the more you bill, the more you pay. A flat plan costs the same whether you invoice $2,000 or $40,000 this month, and you keep all of your card payments except Stripe's own rate.</p>
+        </details>
+        <details>
+          <summary>Do I need a Stripe account?</summary>
+          <p>Only for online card and ACH payments on Pro and Team. If you already have one, connect it in Settings. If not, you can open one from inside OttoPay in a few minutes. The Free plan records payments you collect by cash, check, Zelle or bank transfer.</p>
+        </details>
+        <details>
+          <summary>What does Stripe charge?</summary>
+          <p>Stripe's standard published rate for card payments, paid to Stripe, not to us. You can pass that cost to the customer with the processing-charge option on Pro and Team.</p>
+        </details>
+        <details>
+          <summary>Can my customers pay over time?</summary>
+          <p>Yes, through financing partners available in your Stripe account (Klarna, Affirm, Afterpay) once your account is eligible. You get paid in full when the customer checks out.</p>
+        </details>
+        <details>
+          <summary>What happens if I go back to Free?</summary>
+          <p>Nothing is deleted. Your invoices, customers and history stay. Online payment links stop working until you're back on Pro, and Otto AI pauses.</p>
+        </details>
+        <details>
+          <summary>Is there a contract?</summary>
+          <p>No. Monthly plans cancel any time. Yearly plans are paid up front at the lower rate and don't renew without you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container">
+      <h2>Start on Free. Upgrade from the truck when you're ready.</h2>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup">Create your free account</a>
+        <a class="btn btn-secondary" href="/contact">Ask a question</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-head h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+  .plans {
+    display: grid;
+    gap: 18px;
+    align-items: start;
+  }
+  @media (min-width: 860px) {
+    .plans {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+  .plan {
+    position: relative;
+    background: var(--white);
+    border: 2px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: 28px 24px;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+  }
+  .plan-hi {
+    border-color: var(--brand);
+    box-shadow: 0 16px 40px rgba(15, 122, 102, 0.12);
+  }
+  .tag {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: var(--brand);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .plan h2 {
+    font-size: 1.4rem;
+  }
+  .price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 3.2rem;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .price span {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: 0;
+    margin-left: 4px;
+  }
+  .price-alt {
+    margin-top: -8px;
+    color: var(--ink-3);
+    font-size: 0.95rem;
+  }
+  .plan-who {
+    color: var(--ink-2);
+    font-size: 1rem;
+    min-height: 3lh;
+  }
+  .plan .btn {
+    width: 100%;
+  }
+  .plan .checklist {
+    margin-top: 6px;
+    font-size: 0.98rem;
+    color: var(--ink-2);
+  }
+
+  .pay-grid {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 900px) {
+    .pay-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+    }
+  }
+  .pay-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 24px;
+  }
+  .pay-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+  }
+  .pay-list svg {
+    color: var(--brand);
+    margin-top: 2px;
+  }
+  .pay-list strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.05rem;
+  }
+  .pay-list p {
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+
+  .compare th:first-child,
+  .compare td:first-child {
+    width: 46%;
+  }
+  .compare .cell {
+    white-space: nowrap;
+  }
+  .compare tr.group th {
+    padding-top: 32px;
+    border-bottom: 2px solid var(--ink);
+    font-size: 1.15rem;
+  }
+  .compare :global(.yes) {
+    color: var(--brand);
+  }
+  .compare :global(.no) {
+    color: var(--line-2);
+  }
+
+  .faq-list {
+    margin-top: 28px;
+    display: grid;
+    gap: 0;
+    max-width: 760px;
+  }
+  details {
+    border-top: 1px solid var(--slate-2);
+    padding: 6px 0;
+  }
+  details:last-child {
+    border-bottom: 1px solid var(--slate-2);
+  }
+  summary {
+    cursor: pointer;
+    padding: 14px 0;
+    font-weight: 600;
+    font-size: 1.08rem;
+    color: var(--white);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--amber);
+    line-height: 1;
+  }
+  details[open] summary::after {
+    content: '–';
+  }
+  details p {
+    padding-bottom: 18px;
+    max-width: 66ch;
+  }
+
+  .cta h2 {
+    max-width: 22ch;
+  }
+</style>

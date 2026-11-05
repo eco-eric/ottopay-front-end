@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About OttoPay"
+  description="OttoPay is invoicing and payment software for contractors, built in Dallas–Fort Worth by a 20-year HVAC contractor and part of the EcoSource IQ family of tools for the trades."
+>
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <h1>Built in a truck, not a boardroom</h1>
+        <p class="lede">OttoPay started as one contractor's fix for his own evenings. It grew into invoicing and payments for anyone in construction and home services who finishes a job and would like to be paid for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section story">
+    <div class="container story-grid">
+      <div class="story-copy">
+        <h2>The problem we had</h2>
+        <p>For 20 years our HVAC company did the work during the day and the invoicing at night. Tickets came in handwritten, got typed up late or not at all, and the money came in weeks after the job. When we tried the big field-service platforms, they wanted an office we didn't have and $200 a month we didn't want to spend on dispatch screens.</p>
+        <p>Every invoicing app we tested had the same blind spot: it assumed you were sitting down. We weren't.</p>
+        <h2>What we built instead</h2>
+        <p>An app that lives on a phone, works with no signal in a basement, knows the equipment at each address, and turns a finished job into a sent invoice and a card payment in under a minute. The money goes to the contractor's own Stripe account; we never hold it and never take a cut.</p>
+        <p>HVAC is where it came from, and the equipment tracking and saved services show it. But the problem is the same for a plumber, an electrician, a roofer or a remodeling crew, so that's who it's for.</p>
+      </div>
+      <aside class="facts">
+        <dl>
+          <dt>Founded</dt>
+          <dd>2026, Dallas–Fort Worth, Texas</dd>
+          <dt>Founder</dt>
+          <dd>Eric Love, HVAC contractor and founder of EcoSource IQ</dd>
+          <dt>Part of</dt>
+          <dd>EcoSource IQ, alongside <a href="https://workedge.pro">WorkEdge Pro</a> and Trade OS</dd>
+          <dt>Built for</dt>
+          <dd>Owner-operators and small crews in construction and home services</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container otto">
+      <img src="/img/otto.png" alt="Otto, the OttoPay octopus mascot, wearing a hard hat and holding a phone, a coffee and rolled plans" width="900" height="466" loading="lazy" />
+      <div>
+        <h2>Why an octopus</h2>
+        <p>A contractor runs the business with eight arms: the work, the calls, the quotes, the parts runs, the driving, the books, the marketing, and whatever's left for family. Otto takes invoicing and getting paid off the list so the other arms get their time back.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How we work</h2>
+      </div>
+      <div class="values">
+        <div>
+          <h3>Three taps or it's too many</h3>
+          <p>If a flow needs more than that from a phone in a driveway, we redesign it.</p>
+        </div>
+        <div>
+          <h3>Your money is yours</h3>
+          <p>Payments go to your Stripe account, not ours. No percentage, no holding period, no surprises.</p>
+        </div>
+        <div>
+          <h3>Plain pricing</h3>
+          <p>A free plan that's useful and a Pro plan that costs less than one service call. No contracts.</p>
+        </div>
+        <div>
+          <h3>Support from people in the trades</h3>
+          <p>When you write in, you reach people who've chased a check themselves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mint">
+    <div class="container">
+      <h2>See it for yourself</h2>
+      <p class="lede" style="margin-top:14px">Free plan, five minutes to set up, no card required.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+        <a class="btn btn-secondary" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-head h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+  .story {
+    padding-top: 0;
+  }
+  .story-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .story-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .story-copy h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .story-copy h2:first-child {
+    margin-top: 0;
+  }
+  .story-copy p {
+    max-width: 60ch;
+  }
+  .facts {
+    background: var(--white);
+    border-radius: var(--radius-m);
+    padding: 24px;
+    border: 1px solid var(--line);
+  }
+  dl {
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+  dt {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  dd {
+    margin: 2px 0 0;
+  }
+  .otto {
+    display: grid;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 820px) {
+    .otto {
+      grid-template-columns: 1fr 1.3fr;
+      gap: 56px;
+    }
+  }
+  .otto img {
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+  }
+  .otto h2 {
+    margin-bottom: 12px;
+  }
+  .values {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 760px) {
+    .values {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 56px;
+    }
+  }
+  .values h3 {
+    margin-bottom: 8px;
+  }
+  .values p {
+    color: var(--ink-2);
+  }
+</style>

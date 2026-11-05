@@ -1,0 +1,199 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+const compare = [
+  { what: 'Built for', otto: 'The owner who still works in the field', suite: 'A dispatcher and an office', diy: 'Nobody in particular' },
+  { what: 'Time to first invoice', otto: 'Five minutes after sign-up', suite: 'An onboarding call and a week of setup', diy: 'Whenever you get home' },
+  { what: 'Monthly cost', otto: 'Free, or $29 for payments and AI', suite: '$150 to $300+, often per user', diy: '$0 and your evenings' },
+  { what: 'Cut of your payments', otto: 'None. Stripe\'s rate only, in your own account', suite: 'Often a marked-up processing rate', diy: 'Depends on the card reader' },
+  { what: 'Works without signal', otto: 'Yes, syncs later', suite: 'Usually not', diy: 'Paper always works' },
+  { what: 'Equipment on every address', otto: 'Yes', suite: 'Yes, several menus deep', diy: 'In your head' },
+  { what: 'Leaving', otto: 'Export everything, keep your Stripe account', suite: 'A contract and an export request', diy: 'A shoebox' },
+];
+---
+
+<Base
+  title="Why contractors choose OttoPay"
+  description="OttoPay was built by a 20-year HVAC contractor who was tired of office software in the field. Here's how it compares to the big field-service suites and to paper."
+>
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <h1>Made by someone who's been in the attic</h1>
+        <p class="lede">The big field-service platforms were designed in offices for dispatchers. OttoPay was designed in a truck, by a contractor, for the moment the job is done and you'd like to be paid for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container reasons">
+      <div class="reason">
+        <Icon name="truck" size={32} />
+        <h2>It's finished when the job is</h2>
+        <p>Invoice from the driveway, in under a minute, with the customer's card going through before you pull out. Not at 9 PM. Not next Tuesday.</p>
+      </div>
+      <div class="reason">
+        <Icon name="banknote" size={32} />
+        <h2>Your money never passes through us</h2>
+        <p>Payments go to a Stripe account you own. OttoPay doesn't hold funds, doesn't add a percentage, and doesn't stand between you and your bank.</p>
+      </div>
+      <div class="reason">
+        <Icon name="calculator" size={32} />
+        <h2>Priced for a one-truck shop</h2>
+        <p>Free to get organized. $29 a month when you want the pay button and Otto AI. That's one small service call, not a line item you dread.</p>
+      </div>
+      <div class="reason">
+        <Icon name="wrench" size={32} />
+        <h2>It knows your trade</h2>
+        <p>Equipment per address, warranty dates, saved services with your prices, a parts catalog with your markup. Born in HVAC; at home in plumbing, electrical, roofing, remodeling and the rest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>OttoPay, a field-service suite, or paper</h2>
+        <p class="lede">An honest comparison. The suites are good at things you may not need yet.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">OttoPay</th>
+              <th scope="col">Field-service suite</th>
+              <th scope="col">Paper and texts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {compare.map((r) => (
+              <tr>
+                <th scope="row">{r.what}</th>
+                <td class="otto">{r.otto}</td>
+                <td>{r.suite}</td>
+                <td>{r.diy}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">If you run dispatch for six trucks and a call center, buy the suite. If you're the one on the ladder, you're in the right place.</p>
+    </div>
+  </section>
+
+  <section class="section mint">
+    <div class="container founder">
+      <div class="founder-copy">
+        <h2>A note from the founder</h2>
+        <p>I've run an HVAC company in Dallas–Fort Worth for 20 years and put in more than a thousand systems. For most of that time the invoice was the last thing I did and the first thing that fell behind. I tried the big platforms. They were built for someone with a desk and an admin, and I had neither.</p>
+        <p>OttoPay is the tool I wanted: pull up the customer, tap the job, send it, and watch it get paid while I'm loading the truck. It isn't trying to run your whole company. It's trying to get you paid.</p>
+        <p class="sig">Eric Love, founder of OttoPay and EcoSource IQ</p>
+      </div>
+      <div class="founder-side">
+        <div class="stat"><span>20</span>years in the trades</div>
+        <div class="stat"><span>1,000+</span>HVAC installs</div>
+        <div class="stat"><span>DFW</span>where it's built and used</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container tie">
+      <div>
+        <h2>Part of a small set of tools that work together</h2>
+        <p class="lede" style="margin-top:14px">OttoPay handles the bill. <a href="https://workedge.pro">WorkEdge Pro</a> handles the job record: photos, notes and equipment from the field. Connect them and the documentation lands on the invoice.</p>
+      </div>
+      <div class="btn-row" style="margin-top:0">
+        <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+        <a class="btn btn-secondary" href="/pricing">See pricing</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-head h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+  .reasons {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 820px) {
+    .reasons {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+    }
+  }
+  .reason svg {
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+  .reason h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    margin-bottom: 10px;
+  }
+  table th[scope='row'] {
+    font-family: var(--font-body);
+    font-weight: 600;
+    width: 20%;
+  }
+  td.otto {
+    font-weight: 600;
+    color: var(--brand-deep);
+  }
+  table td,
+  table th {
+    min-width: 150px;
+  }
+  .founder {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 900px) {
+    .founder {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+  }
+  .founder-copy p {
+    margin-top: 16px;
+    max-width: 60ch;
+  }
+  .sig {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .founder-side {
+    display: grid;
+    gap: 18px;
+  }
+  .stat {
+    border-top: 2px solid var(--ink);
+    padding-top: 10px;
+    color: var(--ink-2);
+  }
+  .stat span {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.6rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .tie {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 900px) {
+    .tie {
+      grid-template-columns: 1.4fr auto;
+      align-items: end;
+    }
+  }
+</style>

@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base
+  title="Contact OttoPay"
+  description="Questions about OttoPay, plans, or getting your crew set up? Reach the team in Dallas–Fort Worth."
+>
+  <section class="section">
+    <div class="container contact">
+      <div>
+        <h1>Talk to a person</h1>
+        <p class="lede" style="margin-top:18px">Questions about a plan, help getting set up, or a feature you wish existed. You'll hear back from someone who has actually run a service truck.</p>
+        <ul class="ways">
+          <li>
+            <Icon name="mail" />
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:support@ottopay.pro">support@ottopay.pro</a>
+            </div>
+          </li>
+          <li>
+            <Icon name="message" />
+            <div>
+              <strong>In the app</strong>
+              <span>Tap Help from any screen and Otto will route it to us.</span>
+            </div>
+          </li>
+          <li>
+            <Icon name="home" />
+            <div>
+              <strong>Where we are</strong>
+              <span>Dallas–Fort Worth, Texas</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form" id="contact-form">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Trade</span>
+          <input type="text" name="trade" placeholder="HVAC, plumbing, roofing…" />
+        </label>
+        <label>
+          <span>How can we help?</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="fineprint">We reply within one business day.</p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Until the GoHighLevel form is wired in, submissions open the visitor's email client pre-filled.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const subject = encodeURIComponent(`OttoPay question from ${d.get('name')}${d.get('trade') ? ` (${d.get('trade')})` : ''}`);
+    const body = encodeURIComponent(`${d.get('message')}\n\n— ${d.get('name')}\n${d.get('email')}`);
+    window.location.href = `mailto:support@ottopay.pro?subject=${subject}&body=${body}`;
+  });
+</script>
+
+<style>
+  h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+  .contact {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .contact {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .ways {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: grid;
+    gap: 22px;
+  }
+  .ways li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+  }
+  .ways svg {
+    color: var(--brand);
+    margin-top: 2px;
+  }
+  .ways strong {
+    display: block;
+    margin-bottom: 2px;
+  }
+  .ways span,
+  .ways a {
+    color: var(--ink-2);
+  }
+  .form {
+    display: grid;
+    gap: 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: 28px 24px;
+  }
+  label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  input,
+  textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 12px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-s);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  input:focus,
+  textarea:focus {
+    outline: 3px solid var(--mint-2);
+    border-color: var(--brand);
+  }
+  .form .btn {
+    justify-self: start;
+    margin-top: 6px;
+  }
+</style>

@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/auth", "destination": "https://app.ottopay.pro/auth", "permanent": false },
+    { "source": "/auth/:path*", "destination": "https://app.ottopay.pro/auth/:path*", "permanent": false },
+    { "source": "/mobile-app", "destination": "/features#field", "permanent": true },
+    { "source": "/integrations", "destination": "/features#business", "permanent": true },
+    { "source": "/help-center", "destination": "/contact", "permanent": true },
+    { "source": "/privacy", "destination": "https://app.ottopay.pro/privacy", "permanent": false },
+    { "source": "/terms", "destination": "https://app.ottopay.pro/terms", "permanent": false }
+  ]
+}

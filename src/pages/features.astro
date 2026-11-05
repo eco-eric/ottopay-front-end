@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+const groups = [
+  {
+    id: 'invoicing',
+    short: 'Invoicing',
+    title: 'Invoicing that fits in the time it takes to pack the truck',
+    intro: 'Saved services, a parts catalog with your markup, your branding and terms. The invoice is built before the customer closes the door.',
+    items: [
+      { icon: 'zap', h: 'Saved services', p: 'Load your common jobs with your prices once. One tap adds them to any invoice or estimate.' },
+      { icon: 'wrench', h: 'Parts with markup', p: 'Keep cost and sell price on every part. Add it and the margin is already in the number.' },
+      { icon: 'camera', h: 'Photos on the PDF', p: 'Before-and-after shots go on the invoice itself. The customer sees the work; you have the record.' },
+      { icon: 'send', h: 'Text or email', p: 'Send from the phone. The customer gets a link that opens on theirs, with a pay button at the bottom.' },
+      { icon: 'clock', h: 'Late charges that apply themselves', p: 'Set a flat fee or a percentage and a grace period. OttoPay adds it when the time comes.' },
+      { icon: 'shield', h: 'Your warranty on every job', p: 'Your service warranty attaches to each completed invoice without you remembering to add it.' },
+    ],
+  },
+  {
+    id: 'estimates',
+    short: 'Estimates',
+    title: 'Estimates the customer accepts from their kitchen',
+    intro: 'Send it from the driveway. They open it on their phone, read the line items and accept with their name and a timestamp.',
+    items: [
+      { icon: 'file', h: 'Online acceptance', p: 'No printing, no signing, no "I\'ll call you back." Accepted or declined, with the time it happened.' },
+      { icon: 'zap', h: 'One tap to invoice', p: 'An accepted estimate becomes the invoice with every line, note and term carried over.' },
+      { icon: 'clock', h: 'Expiration dates', p: 'Prices move. Give estimates a shelf life and they mark themselves expired.' },
+      { icon: 'sparkles', h: 'Built by Otto AI', p: 'Describe the job in plain words. Otto drafts the estimate with line items and prices from your catalog.' },
+    ],
+  },
+  {
+    id: 'payments',
+    short: 'Payments',
+    title: 'Paid from the invoice, into your own Stripe account',
+    intro: 'Card, ACH, cash, check. Every payment lands on the customer record, and online payments go straight to a Stripe account that belongs to you.',
+    items: [
+      { icon: 'card', h: 'Pay-by-link', p: 'Every invoice has a link. The customer taps, enters a card, and the money is on its way to your bank.' },
+      { icon: 'banknote', h: 'Charge on-site', p: 'Standing in the driveway? Take the card right there and send the receipt before you leave.' },
+      { icon: 'calculator', h: 'Customer covers the card fee', p: 'Turn on the processing charge and invoices show one all-in total. Cash customers see the base price.' },
+      { icon: 'receipt', h: 'Partial payments and deposits', p: 'Half now, half at completion. OttoPay tracks what\'s paid and what\'s left.' },
+      { icon: 'bell', h: 'Receipts and reminders', p: 'A branded receipt goes out the moment payment clears. Reminders go before and after the due date, inside business hours.' },
+      { icon: 'home', h: 'Financing on big jobs', p: 'When your Stripe account qualifies, offer Klarna, Affirm and Afterpay on the invoice. You\'re paid in full up front.' },
+    ],
+  },
+  {
+    id: 'field',
+    short: 'In the field',
+    title: 'Built for attics, crawlspaces and the back of the truck',
+    intro: 'A phone-first app that keeps working where the signal doesn\'t.',
+    items: [
+      { icon: 'wifi-off', h: 'Full offline mode', p: 'Create and edit with zero bars. Everything saves on the phone and syncs the moment you\'re back in range.' },
+      { icon: 'phone', h: 'One-handed', p: 'Big targets and short flows, because the other hand is holding a flashlight.' },
+      { icon: 'camera', h: 'Camera built in', p: 'Model plates, serial numbers, finished work. Shoot it from inside the app and it goes where it belongs.' },
+      { icon: 'download', h: 'Install from the browser', p: 'Add OttoPay to your home screen and it runs full-screen like a native app. Dedicated iOS and Android apps are in the works.' },
+    ],
+  },
+  {
+    id: 'customers',
+    short: 'Customers',
+    title: 'Know what\'s on the roof before you knock',
+    intro: 'Every address keeps its equipment, its history and every message you\'ve sent.',
+    items: [
+      { icon: 'users', h: 'Customer records', p: 'Name, phones, emails, addresses, every invoice and estimate. Searchable in seconds.' },
+      { icon: 'wrench', h: 'Equipment per address', p: 'Brand, model, serial, capacity, install date, warranty expiration, on every unit you touch.' },
+      { icon: 'home', h: 'Landlords and tenants', p: 'Several contacts and addresses on one record, so the property manager and the tenant both get the right thing.' },
+      { icon: 'message', h: 'Communication log', p: 'Every text, email and payment stored on the customer, so "I never got it" is a two-second lookup.' },
+    ],
+  },
+  {
+    id: 'ai',
+    short: 'Otto AI',
+    title: 'Otto AI, the crew member who likes paperwork',
+    intro: 'Included on Pro and Team. Otto does the typing; you check it and send.',
+    items: [
+      { icon: 'sparkles', h: 'Plain words to line items', p: '"Replaced the condenser fan motor and capacitor, recharged 2 lbs R-410A." Otto writes the invoice lines.' },
+      { icon: 'receipt', h: 'Receipt scanner', p: 'Photograph the supply-house receipt. Otto reads the vendor, date and amount and logs the expense to the job.' },
+      { icon: 'camera', h: 'Photo to catalog item', p: 'Snap a part and Otto creates the catalog entry with a name, description and suggested price.' },
+      { icon: 'chart', h: 'Daily status', p: 'Open invoices, overdue accounts, what needs a reminder today, in one short summary each morning.' },
+    ],
+  },
+  {
+    id: 'business',
+    short: 'Reports and team',
+    title: 'Numbers without a spreadsheet',
+    intro: 'Enough reporting to run the business and hand your accountant what they need, and no more.',
+    items: [
+      { icon: 'chart', h: 'Revenue and payment reports', p: 'By week, month or quarter, split by payment method.' },
+      { icon: 'receipt', h: 'Tax collected', p: 'Sales tax by period, ready to file.' },
+      { icon: 'calculator', h: 'Expenses by category', p: 'Fuel, materials, subs, permits, tagged to the job or customer.' },
+      { icon: 'download', h: 'CSV export', p: 'Invoices, payments, customers and expenses, for QuickBooks or whatever your accountant uses.' },
+      { icon: 'link', h: 'WorkEdge Pro sync', p: 'Jobs, photos and notes from WorkEdge Pro land on the invoice without re-typing.' },
+      { icon: 'users', h: 'Team seats', p: 'Everyone on the crew invoices from their own phone; the money and the reports stay in one place.' },
+    ],
+  },
+];
+---
+
+<Base
+  title="OttoPay Features — Invoices, estimates, payments and Otto AI"
+  description="Everything a small contractor needs to bill and get paid from the field: invoices in under a minute, online estimates, card payments through your own Stripe account, offline mode, equipment tracking and Otto AI."
+>
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <h1>What's in the toolbox</h1>
+        <p class="lede">Everything a small shop needs to bill and get paid, and nothing an office needs. Built for a phone in a work glove.</p>
+      </div>
+      <nav class="jump" aria-label="On this page">
+        {groups.map((g) => <a href={`#${g.id}`}>{g.short}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  {groups.map((g, i) => (
+    <section class:list={['section', { dark: i % 2 === 1 }]} id={g.id}>
+      <div class="container">
+        <div class="section-head">
+          <h2>{g.title}</h2>
+          <p class="lede">{g.intro}</p>
+        </div>
+        <div class="feature-grid">
+          {g.items.map((it) => (
+            <div class="feature">
+              <Icon name={it.icon} />
+              <h3>{it.h}</h3>
+              <p>{it.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section mint">
+    <div class="container">
+      <h2>Free gets you off paper. Pro gets you paid.</h2>
+      <p class="lede" style="margin-top:16px">Compare what's in each plan, or just start on Free and upgrade from the truck when you want the pay button.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/pricing">See plans</a>
+        <a class="btn btn-secondary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-head h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .jump a {
+    text-decoration: none;
+    color: var(--ink-2);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    background: var(--white);
+  }
+  .jump a:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="about">
+      <a class="brand" href="/">
+        <img src="/img/otto.png" alt="" width="54" height="28" />
+        <span>OttoPay</span>
+      </a>
+      <p>Invoicing and payments built for the trades. Send the invoice from the driveway and get paid before you're home.</p>
+      <p class="made">Made in Dallas–Fort Worth by a contractor with 20 years in the field.</p>
+    </div>
+
+    <nav aria-label="Product">
+      <h4>Product</h4>
+      <a href="/features">Features</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/why-us">Why OttoPay</a>
+      <a href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+      <a href="https://app.ottopay.pro/auth">Log in</a>
+    </nav>
+
+    <nav aria-label="Company">
+      <h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="https://workedge.pro">WorkEdge Pro</a>
+      <a href="https://app.ottopay.pro/privacy">Privacy</a>
+      <a href="https://app.ottopay.pro/terms">Terms</a>
+    </nav>
+  </div>
+  <div class="container legal">
+    <span>© {year} OttoPay, an EcoSource IQ product. All rights reserved.</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--slate);
+    color: var(--slate-text);
+    padding: clamp(48px, 7vw, 80px) 0 28px;
+  }
+  .footer-inner {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .footer-inner {
+      grid-template-columns: 1.6fr 1fr 1fr;
+    }
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+  }
+  .brand img {
+    height: 28px;
+    width: auto;
+  }
+  .about p {
+    color: var(--slate-muted);
+    max-width: 44ch;
+  }
+  .made {
+    margin-top: 12px;
+    font-size: 0.95rem;
+  }
+  nav {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+  }
+  nav h4 {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  nav a {
+    color: var(--slate-muted);
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--white);
+  }
+  .legal {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--slate-2);
+    font-size: 0.9rem;
+    color: var(--slate-muted);
+  }
+</style>

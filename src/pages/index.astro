@@ -1,0 +1,509 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PaidTicket from '../components/PaidTicket.astro';
+
+const trades = [
+  'HVAC', 'Plumbing', 'Electrical', 'Roofing', 'Remodeling', 'Painting',
+  'Landscaping', 'Handyman', 'Pest control', 'Appliance repair', 'Garage doors', 'Concrete',
+];
+---
+
+<Base
+  title="OttoPay — Invoicing and payments for contractors"
+  description="Send an invoice from the job site and get paid by card in minutes. Built for construction and home-service contractors by a contractor."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Invoice from the driveway. Paid before you get home.</h1>
+        <p class="lede">
+          OttoPay turns a finished job into a sent invoice and a card payment in under a minute. Built by a contractor, for contractors in construction and home services.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+          <a class="btn btn-secondary" href="/pricing">See pricing</a>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="check" size={18} /> Your own Stripe account</li>
+          <li><Icon name="check" size={18} /> Works offline</li>
+          <li><Icon name="check" size={18} /> No per-invoice fees</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="/img/truck-estimate.jpg"
+          alt="A contractor in his truck holding a phone with an OttoPay invoice next to a handwritten paper estimate"
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+        <div class="hero-ticket">
+          <PaidTicket />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder line -->
+  <section class="proof">
+    <div class="container proof-inner">
+      <p>
+        <strong>20 years in the trades. 1,000+ HVAC installs.</strong> OttoPay exists because every invoicing app we tried was built for someone sitting at a desk.
+      </p>
+      <a href="/about">Read the story</a>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>You didn't get into this to chase checks</h2>
+        <p class="lede">The job is done at 3. The invoice gets written at 9. The money shows up in three weeks, if the customer remembers.</p>
+      </div>
+      <div class="problems">
+        <div class="problem">
+          <h3>Paperwork after dinner</h3>
+          <p>Handwritten tickets get typed up at night, or they don't. Either way the invoice goes out days after the work.</p>
+        </div>
+        <div class="problem">
+          <h3>"Can you send that again?"</h3>
+          <p>A photo of a carbon copy gets lost in a text thread. You look small, and you wait longer.</p>
+        </div>
+        <div class="problem">
+          <h3>$200 a month for a suite you don't use</h3>
+          <p>The big field-service platforms bundle dispatch, marketing and payroll. You need to get paid.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section dark">
+    <div class="container">
+      <div class="section-head">
+        <h2>Three taps between the last screw and the money</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-n">1</span>
+          <div>
+            <h3>Finish the job</h3>
+            <p>Pick the service from your saved list, add parts from your catalog, snap a photo of the work. Or describe the job in plain words and Otto writes the line items.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">2</span>
+          <div>
+            <h3>Send it from the truck</h3>
+            <p>Text or email a branded invoice with a pay button. No signal in the basement? It sends when you're back in range.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">3</span>
+          <div>
+            <h3>Get paid on the spot</h3>
+            <p>The customer taps, enters a card, done. The money goes to your own Stripe account. OttoPay never touches it and never takes a cut.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Photo break -->
+  <section class="photo-band">
+    <img
+      src="/img/paid-at-tailgate.jpg"
+      alt="A contractor and a homeowner at a truck tailgate, both looking at phones showing a payment received"
+      width="1800"
+      height="982"
+      loading="lazy"
+    />
+    <div class="photo-caption container">
+      <p>Card, bank transfer, cash or check. Every payment lands on the customer's record, so you always know who owes what.</p>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything a small shop needs to bill. Nothing an office needs.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <Icon name="zap" />
+          <h3>Invoices in under a minute</h3>
+          <p>Saved services with your prices, parts with markup, tax and terms filled in. Tap, adjust, send.</p>
+        </div>
+        <div class="feature">
+          <Icon name="file" />
+          <h3>Estimates that close</h3>
+          <p>Customers accept on their phone with a timestamp. One tap turns the estimate into the invoice.</p>
+        </div>
+        <div class="feature">
+          <Icon name="card" />
+          <h3>Pay by link</h3>
+          <p>Card and ACH through your own Stripe account. Partial payments and deposits tracked automatically.</p>
+        </div>
+        <div class="feature">
+          <Icon name="wifi-off" />
+          <h3>Works with zero bars</h3>
+          <p>Attics, crawlspaces, rural lots. Everything saves on the phone and syncs when you're back in range.</p>
+        </div>
+        <div class="feature">
+          <Icon name="wrench" />
+          <h3>Equipment on every customer</h3>
+          <p>Brand, model, serial, install date and warranty, so you know what's on the roof before you knock.</p>
+        </div>
+        <div class="feature">
+          <Icon name="sparkles" />
+          <h3>Otto AI</h3>
+          <p>Describe the job, get the line items. Photograph a receipt, get the expense logged. Draft the reminder, don't write it.</p>
+        </div>
+        <div class="feature">
+          <Icon name="bell" />
+          <h3>Reminders that do the nagging</h3>
+          <p>Scheduled texts and emails before and after the due date, inside business hours only.</p>
+        </div>
+        <div class="feature">
+          <Icon name="chart" />
+          <h3>Numbers your accountant wants</h3>
+          <p>Revenue, tax collected and expenses by period. Export to CSV for QuickBooks or whatever they use.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="/features">See all features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing teaser -->
+  <section class="section mint">
+    <div class="container">
+      <div class="section-head">
+        <h2>Start free. Pay when it's making you money.</h2>
+        <p class="lede">No per-invoice fees and no percentage on your payments. Card processing is between you and Stripe at Stripe's standard rate.</p>
+      </div>
+      <div class="plans">
+        <a class="plan" href="/pricing">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <p>Unlimited invoices and estimates. Record cash and checks. Get organized.</p>
+        </a>
+        <a class="plan plan-hi" href="/pricing">
+          <h3>Pro</h3>
+          <div class="price">$29<span>/mo</span></div>
+          <p>Online card payments, Otto AI, automated reminders, WorkEdge Pro sync. $24/mo paid yearly.</p>
+        </a>
+        <a class="plan" href="/pricing">
+          <h3>Team</h3>
+          <div class="price">$79<span>/mo</span></div>
+          <p>Everything in Pro for a crew. Five people invoicing from the field, one set of books.</p>
+        </a>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/pricing">Compare plans</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="section">
+    <div class="container who">
+      <div class="who-copy">
+        <h2>Built for the owner who still swings the hammer</h2>
+        <p class="lede">OttoPay was born in HVAC and works for any trade that finishes a job and needs to bill for it.</p>
+        <ul class="who-list">
+          <li><strong>The solo operator.</strong> Your van, your tools, your evenings back.</li>
+          <li><strong>Owner plus a crew.</strong> Your helper is great with duct and useless with paperwork. Otto handles it.</li>
+          <li><strong>The growing shop.</strong> Five techs invoicing from the field, every payment on one ledger.</li>
+        </ul>
+      </div>
+      <div class="who-trades">
+        <div class="chips">
+          {trades.map((t) => <span class="chip">{t}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WorkEdge tie-in -->
+  <section class="section-tight">
+    <div class="container tie">
+      <Icon name="link" size={28} />
+      <p><strong>Document the job in WorkEdge Pro, bill it in OttoPay.</strong> Photos, notes and equipment from the field sync straight onto the invoice. <a href="https://workedge.pro">About WorkEdge Pro</a></p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section dark cta">
+    <div class="container">
+      <h2>Send your first invoice tonight</h2>
+      <p class="lede">Set up in five minutes. Free plan, no card required, your data is yours.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://app.ottopay.pro/auth?mode=signup">Start free</a>
+        <a class="btn btn-secondary" href="/contact">Talk to a human</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: clamp(40px, 6vw, 88px) 0 0;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 56px;
+    }
+  }
+  .hero-copy .lede {
+    margin-top: 22px;
+  }
+  .hero-trust {
+    list-style: none;
+    padding: 0;
+    margin: 26px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    color: var(--ink-2);
+    font-size: 0.98rem;
+  }
+  .hero-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-trust svg {
+    color: var(--brand);
+  }
+  .hero-visual {
+    position: relative;
+    padding-bottom: 150px;
+  }
+  @media (min-width: 600px) {
+    .hero-visual {
+      padding-bottom: 56px;
+    }
+  }
+  .hero-visual img {
+    border-radius: var(--radius-l);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+  .hero-ticket {
+    position: absolute;
+    left: 16px;
+    bottom: 0;
+  }
+  @media (min-width: 600px) {
+    .hero-ticket {
+      left: auto;
+      right: -8px;
+      bottom: 8px;
+    }
+  }
+
+  .proof {
+    margin-top: clamp(32px, 5vw, 64px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper-2);
+  }
+  .proof-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    font-size: 1.02rem;
+  }
+  .proof p {
+    max-width: 70ch;
+  }
+
+  .problems {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 760px) {
+    .problems {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+  }
+  .problem {
+    border-left: 3px solid var(--amber);
+    padding-left: 18px;
+  }
+  .problem p {
+    margin-top: 10px;
+    color: var(--ink-2);
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 860px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .step-n {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--amber);
+    min-width: 36px;
+  }
+  .steps h3 {
+    margin-bottom: 8px;
+  }
+
+  .photo-band {
+    position: relative;
+    background: var(--slate);
+  }
+  .photo-band img {
+    width: 100%;
+    height: auto;
+    max-height: 640px;
+    object-fit: cover;
+  }
+  .photo-caption {
+    padding-top: 20px;
+    padding-bottom: 24px;
+    color: var(--slate-muted);
+  }
+  .photo-caption p {
+    max-width: 60ch;
+    font-size: 1.05rem;
+  }
+
+  .plans {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 760px) {
+    .plans {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+  .plan {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--white);
+    border: 2px solid var(--white);
+    border-radius: var(--radius-m);
+    padding: 24px;
+  }
+  .plan:hover {
+    border-color: var(--brand);
+  }
+  .plan-hi {
+    border-color: var(--brand);
+    background: var(--white);
+  }
+  .plan h3 {
+    font-size: 1.25rem;
+  }
+  .price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.6rem;
+    letter-spacing: -0.03em;
+    margin: 6px 0 10px;
+  }
+  .price span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: 0;
+    margin-left: 2px;
+  }
+  .plan p {
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+
+  .who {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 900px) {
+    .who {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+  }
+  .who-copy .lede {
+    margin-top: 16px;
+  }
+  .who-list {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: grid;
+    gap: 16px;
+    color: var(--ink-2);
+  }
+  .who-list strong {
+    color: var(--ink);
+  }
+
+  .tie {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .tie svg {
+    color: var(--brand);
+    margin-top: 2px;
+  }
+  .tie p {
+    max-width: 70ch;
+  }
+
+  .cta h2 {
+    max-width: 16ch;
+  }
+  .cta .lede {
+    margin-top: 16px;
+  }
+</style>
