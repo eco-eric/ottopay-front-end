@@ -141,7 +141,7 @@
       "destination": "https://dugcfcefpmdkmqeudzpm.supabase.co/functions/v1/sitemap-programmatic"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
