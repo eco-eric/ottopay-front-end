@@ -2,12 +2,155 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/auth", "destination": "https://app.ottopay.pro/auth", "permanent": false },
-    { "source": "/auth/:path*", "destination": "https://app.ottopay.pro/auth/:path*", "permanent": false },
-    { "source": "/mobile-app", "destination": "/features#field", "permanent": true },
-    { "source": "/integrations", "destination": "/features#business", "permanent": true },
-    { "source": "/help-center", "destination": "/contact", "permanent": true },
-    { "source": "/privacy", "destination": "https://app.ottopay.pro/privacy", "permanent": false },
-    { "source": "/terms", "destination": "https://app.ottopay.pro/terms", "permanent": false }
+    {
+      "source": "/auth",
+      "destination": "https://app.ottopay.pro/auth",
+      "permanent": true
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "https://app.ottopay.pro/auth/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/setup",
+      "destination": "https://app.ottopay.pro/setup",
+      "permanent": true
+    },
+    {
+      "source": "/verify-email",
+      "destination": "https://app.ottopay.pro/verify-email",
+      "permanent": true
+    },
+    {
+      "source": "/account-deleted",
+      "destination": "https://app.ottopay.pro/account-deleted",
+      "permanent": true
+    },
+    {
+      "source": "/join",
+      "destination": "https://app.ottopay.pro/join",
+      "permanent": true
+    },
+    {
+      "source": "/partner-invite",
+      "destination": "https://app.ottopay.pro/partner-invite",
+      "permanent": true
+    },
+    {
+      "source": "/pay/:path*",
+      "destination": "https://app.ottopay.pro/pay/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/estimate/:path*",
+      "destination": "https://app.ottopay.pro/estimate/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/customers",
+      "destination": "https://app.ottopay.pro/customers",
+      "permanent": true
+    },
+    {
+      "source": "/customers/:path*",
+      "destination": "https://app.ottopay.pro/customers/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/invoices",
+      "destination": "https://app.ottopay.pro/invoices",
+      "permanent": true
+    },
+    {
+      "source": "/invoices/:path*",
+      "destination": "https://app.ottopay.pro/invoices/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/estimates",
+      "destination": "https://app.ottopay.pro/estimates",
+      "permanent": true
+    },
+    {
+      "source": "/estimates/:path*",
+      "destination": "https://app.ottopay.pro/estimates/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/payments",
+      "destination": "https://app.ottopay.pro/payments",
+      "permanent": true
+    },
+    {
+      "source": "/templates",
+      "destination": "https://app.ottopay.pro/templates",
+      "permanent": true
+    },
+    {
+      "source": "/catalog",
+      "destination": "https://app.ottopay.pro/catalog",
+      "permanent": true
+    },
+    {
+      "source": "/jobs",
+      "destination": "https://app.ottopay.pro/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/expenses",
+      "destination": "https://app.ottopay.pro/expenses",
+      "permanent": true
+    },
+    {
+      "source": "/reports",
+      "destination": "https://app.ottopay.pro/reports",
+      "permanent": true
+    },
+    {
+      "source": "/bid-builder",
+      "destination": "https://app.ottopay.pro/bid-builder",
+      "permanent": true
+    },
+    {
+      "source": "/bid-builder/:path*",
+      "destination": "https://app.ottopay.pro/bid-builder/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/settings",
+      "destination": "https://app.ottopay.pro/settings",
+      "permanent": true
+    },
+    {
+      "source": "/settings/:path*",
+      "destination": "https://app.ottopay.pro/settings/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/mobile-app",
+      "destination": "/features#field",
+      "permanent": true
+    },
+    {
+      "source": "/integrations",
+      "destination": "/features#business",
+      "permanent": true
+    },
+    {
+      "source": "/help-center",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "https://app.ottopay.pro/privacy",
+      "permanent": false
+    },
+    {
+      "source": "/terms",
+      "destination": "https://app.ottopay.pro/terms",
+      "permanent": false
+    }
   ]
 }
