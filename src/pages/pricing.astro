@@ -43,7 +43,7 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
   {
     group: 'Otto AI',
     items: [
-      { label: 'Describe the job, Otto writes the line items', free: false, pro: true, team: true },
+      { label: 'Describe the job, Otto writes the line items', free: '10 tries', pro: true, team: true },
       { label: 'Estimate builder from plain-English notes', free: false, pro: true, team: true },
       { label: 'Receipt scanner that logs the expense', free: false, pro: true, team: true },
       { label: 'Photo of a part becomes a catalog item', free: false, pro: true, team: true },
@@ -53,9 +53,9 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
   {
     group: 'Team and reports',
     items: [
-      { label: 'People on the account', free: '1', pro: '2', team: '5, then $15 per seat' },
-      { label: 'Revenue, tax and expense reports', free: 'Basic', pro: true, team: true },
-      { label: 'CSV export for your accountant', free: true, pro: true, team: true },
+      { label: 'People on the account', free: '1', pro: '2, then $5 each', team: '10, then $5 each' },
+      { label: 'Revenue, tax and expense reports', free: false, pro: true, team: true },
+      { label: 'CSV export for your accountant', free: false, pro: true, team: true },
       { label: 'Works offline, syncs later', free: true, pro: true, team: true },
     ],
   },
@@ -84,6 +84,7 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
             <li><Icon name="check" size={20} />Text and email delivery</li>
             <li><Icon name="check" size={20} />Record cash, check and bank payments</li>
             <li><Icon name="check" size={20} />Customers, equipment, jobs, expenses</li>
+            <li><Icon name="check" size={20} />10 Otto AI tries</li>
             <li><Icon name="check" size={20} />Works offline</li>
           </ul>
         </div>
@@ -101,18 +102,19 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
             <li><Icon name="check" size={20} />Otto AI: line items, estimates, receipts</li>
             <li><Icon name="check" size={20} />Automated reminders and receipts</li>
             <li><Icon name="check" size={20} />WorkEdge Pro sync</li>
-            <li><Icon name="check" size={20} />Two people on the account</li>
+            <li><Icon name="check" size={20} />Two people included, $5/mo per extra user</li>
+            <li><Icon name="check" size={20} />14-day Pro trial, no card needed</li>
           </ul>
         </div>
 
         <div class="plan">
           <h2>Team</h2>
-          <div class="price">$79<span>/mo</span></div>
-          <p class="price-alt">or $66/mo paid yearly ($792)</p>
-          <p class="plan-who">For a shop with a crew in the field. Everything in Pro, for five people, on one set of books.</p>
+          <div class="price">$59<span>/mo</span></div>
+          <p class="price-alt">or $49/mo paid yearly ($588)</p>
+          <p class="plan-who">For a shop with a crew in the field. Everything in Pro, for up to ten people, on one set of books.</p>
           <a class="btn btn-secondary" href="https://app.ottopay.pro/auth?mode=signup&plan=team">Start with Team</a>
           <ul class="checklist">
-            <li><Icon name="check" size={20} />Five people included, $15/mo per extra seat</li>
+            <li><Icon name="check" size={20} />Ten people included, $5/mo per extra user</li>
             <li><Icon name="check" size={20} />Every tech invoices from the field</li>
             <li><Icon name="check" size={20} />One ledger, one tax report</li>
             <li><Icon name="check" size={20} />Team member profiles and permissions</li>
@@ -120,7 +122,7 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
         </div>
       </div>
 
-      <p class="fineprint">Prices in USD. Change or cancel any time; your invoices and customers stay yours on every plan.</p>
+      <p class="fineprint">Prices in USD. Yearly plans are two months free. New accounts get Pro for 14 days with no card; after that you pick a plan or stay on Free with everything you've made. Change or cancel any time.</p>
     </div>
   </section>
 
@@ -136,14 +138,14 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
           <Icon name="banknote" />
           <div>
             <strong>Stripe's standard rate, nothing on top</strong>
-            <p>You pay Stripe's published card rate on each payment, the same as any business using Stripe directly. We don't mark it up.</p>
+            <p>Stripe charges your account its standard rate, 2.9% + 30¢ for most US cards, the same as any business using Stripe directly. We don't mark it up.</p>
           </div>
         </li>
         <li>
           <Icon name="calculator" />
           <div>
             <strong>Let the customer cover the card fee</strong>
-            <p>Turn on the processing charge and invoices show one clean total that includes it. Paying cash? Tap once to show the base price.</p>
+            <p>Turn on the card fee and card payments carry a separate charge of up to 3%. Cash, check and bank transfer stay at the invoice total. Some states limit surcharges, so check yours.</p>
           </div>
         </li>
         <li>
@@ -215,7 +217,7 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
         </details>
         <details>
           <summary>What does Stripe charge?</summary>
-          <p>Stripe's standard published rate for card payments, paid to Stripe, not to us. You can pass that cost to the customer with the processing-charge option on Pro and Team.</p>
+          <p>Stripe's standard rate, 2.9% + 30¢ for most US cards, paid to Stripe, not to us. On Pro and Team you can add a card fee of up to 3% so the customer covers it.</p>
         </details>
         <details>
           <summary>Can my customers pay over time?</summary>
@@ -223,11 +225,11 @@ const rows: { group: string; items: { label: string; free: Cell; pro: Cell; team
         </details>
         <details>
           <summary>What happens if I go back to Free?</summary>
-          <p>Nothing is deleted. Your invoices, customers and history stay. Online payment links stop working until you're back on Pro, and Otto AI pauses.</p>
+          <p>Nothing is deleted. Your invoices, customers and history stay. Online payment links stop working until you're back on Pro, and reports, export and Otto AI pause.</p>
         </details>
         <details>
           <summary>Is there a contract?</summary>
-          <p>No. Monthly plans cancel any time. Yearly plans are paid up front at the lower rate and don't renew without you.</p>
+          <p>No. Switch plans or between monthly and yearly from Settings. If you cancel, you keep your plan to the end of the billing period, then move to Free.</p>
         </details>
       </div>
     </div>
