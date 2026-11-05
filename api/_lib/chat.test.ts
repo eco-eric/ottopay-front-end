@@ -73,7 +73,9 @@ describe("originAllowed", () => {
     expect(originAllowed("https://www.ottopay.pro", undefined)).toBe(true);
     expect(originAllowed("https://ottopay-front-end-git-site-chat-eric-loves-projects.vercel.app", undefined)).toBe(true);
     expect(originAllowed("http://localhost:8080", undefined)).toBe(true);
+    expect(originAllowed("https://ottopay-front-6ymqmqg5t-eric-loves-projects.vercel.app", undefined)).toBe(true);
     expect(originAllowed("https://someone-else.vercel.app", undefined)).toBe(false);
+    expect(originAllowed("https://ottopay-front-end-evil.vercel.app", undefined)).toBe(false);
     expect(originAllowed("http://ottopay.pro", undefined)).toBe(false);
     expect(originAllowed("https://ottopay.pro.evil.com", undefined)).toBe(false);
     expect(originAllowed(null, undefined)).toBe(false);

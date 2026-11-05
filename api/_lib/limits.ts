@@ -92,8 +92,9 @@ export function originAllowed(origin: string | null, extra: string | undefined):
   }
   if (host === "ottopay.pro" || host === "www.ottopay.pro") return true;
   if (host === "localhost" || host === "127.0.0.1") return true;
-  // This project's own Vercel preview addresses.
-  if (host.endsWith(".vercel.app") && host.startsWith("ottopay-front-end-")) return true;
+  // This project's own Vercel preview addresses, e.g. ottopay-front-end-git-site-chat-eric-loves-projects.vercel.app
+  // or ottopay-front-6ymqmqg5t-eric-loves-projects.vercel.app (Vercel shortens the project name there).
+  if (host.startsWith("ottopay-front") && host.endsWith("-eric-loves-projects.vercel.app")) return true;
   const allowed = (extra ?? "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
   return allowed.includes(host);
 }
