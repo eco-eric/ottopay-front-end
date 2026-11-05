@@ -62,7 +62,7 @@ import Icon from '../components/Icon.astro';
 </Base>
 
 <script>
-  // Until the GoHighLevel form is wired in, submissions open the visitor's email client pre-filled.
+  // Submissions open the visitor's email client pre-filled until a form backend is wired in.
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
