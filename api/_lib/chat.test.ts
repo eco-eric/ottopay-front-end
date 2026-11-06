@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildSystemPrompt } from "./knowledge";
+import { buildSystemPrompt, OFF_TOPIC_REPLY } from "./knowledge";
 import { LIMITS, RateLimiter, originAllowed, parseChatBody } from "./limits";
 import { DEFAULT_MODEL, pickModel, sseToText, streamChat } from "./openrouter";
 import { PLANS } from "../../src/lib/plans";
@@ -139,6 +139,11 @@ describe("system prompt", () => {
   });
   it("says there's no cut of payments", () => {
     expect(prompt).toMatch(/takes no cut/);
+  });
+  it("turns away off-topic questions with a set reply", () => {
+    expect(prompt).toContain(OFF_TOPIC_REPLY);
+    expect(prompt).toMatch(/weather/);
+    expect(prompt).toMatch(/even when it's harmless/);
   });
 });
 
