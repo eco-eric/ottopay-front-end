@@ -197,3 +197,38 @@ describe("the /api/chat handler", () => {
     }
   });
 });
+
+describe("follow-up requests", async () => {
+  const client = await import("../../src/components/chat/chatClient");
+  const server = await import("./knowledge");
+
+  it("uses the same marker on both sides and tells the bot about it", () => {
+    expect(client.FOLLOW_UP_TOKEN).toBe(server.FOLLOW_UP_TOKEN);
+    expect(buildSystemPrompt({ appUrl: "https://app.ottopay.pro", page: null })).toContain(server.FOLLOW_UP_TOKEN);
+  });
+
+  it("hides the marker, even while it is still arriving", () => {
+    expect(client.splitFollowUp("The team can reach out.\n[[FOLLOW_UP]]")).toEqual({ text: "The team can reach out.", offer: true });
+    expect(client.splitFollowUp("The team can reach out.\n[[FOLL")).toEqual({ text: "The team can reach out.", offer: false });
+    expect(client.splitFollowUp("Use [[brackets]] freely")).toEqual({ text: "Use [[brackets]] freely", offer: false });
+  });
+
+  it("checks the form", () => {
+    expect(client.leadProblem({ name: "", email: "a@b.co", note: "" })).toMatch(/name/);
+    expect(client.leadProblem({ name: "Sam", email: "not-an-email", note: "" })).toMatch(/email/);
+    expect(client.leadProblem({ name: "Sam Ortiz", email: "sam@ortizhvac.com", note: "" })).toBe(null);
+  });
+
+  it("splits the name and builds the message from the visitor's own questions", () => {
+    expect(client.splitName("  Sam  de la Cruz ")).toEqual({ first: "Sam", last: "de la Cruz" });
+    expect(client.splitName("Sam")).toEqual({ first: "Sam", last: "" });
+    const msg = client.leadMessage({ name: "Sam", email: "s@x.co", note: "Crew of 6" }, [
+      { role: "user", content: "Can my crew use it?" },
+      { role: "assistant", content: "Yes, Team covers up to 10." },
+    ], "/pricing");
+    expect(msg).toContain("Page: /pricing");
+    expect(msg).toContain("Crew of 6");
+    expect(msg).toContain("- Can my crew use it?");
+    expect(msg).not.toContain("Team covers");
+  });
+});

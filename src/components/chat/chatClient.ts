@@ -101,3 +101,53 @@ export function track(event: string): void {
   const w = window as unknown as { dataLayer?: unknown[] };
   if (Array.isArray(w.dataLayer)) w.dataLayer.push({ event });
 }
+
+/** Must match FOLLOW_UP_TOKEN in api/_lib/knowledge.ts. */
+export const FOLLOW_UP_TOKEN = "[[FOLLOW_UP]]";
+
+/**
+ * Takes the follow-up marker out of an answer. While an answer is still streaming, a half-arrived
+ * marker at the end ("[[FOLL") is hidden too, so it never flashes on screen.
+ */
+export function splitFollowUp(answer: string): { text: string; offer: boolean } {
+  const offer = answer.includes(FOLLOW_UP_TOKEN);
+  let text = answer.split(FOLLOW_UP_TOKEN).join("");
+  const partial = text.lastIndexOf("[[");
+  if (partial !== -1 && FOLLOW_UP_TOKEN.startsWith(text.slice(partial))) text = text.slice(0, partial);
+  return { text: text.trimEnd(), offer };
+}
+
+export type Lead = { name: string; email: string; note: string };
+
+const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,24}$/i;
+
+/** Checks the follow-up form. Returns a message for the visitor, or null when it's fine. */
+export function leadProblem(lead: Lead): string | null {
+  if (!lead.name.trim()) return "Please add your name.";
+  if (lead.name.trim().length > 100) return "Please shorten your name.";
+  if (!EMAIL.test(lead.email.trim())) return "Please check your email address.";
+  if (lead.note.length > 1000) return "Please keep the note under 1,000 characters.";
+  return null;
+}
+
+/** First word as first name, the rest as last name (the contact table needs both). */
+export function splitName(name: string): { first: string; last: string } {
+  const parts = name.trim().split(/\s+/);
+  return { first: parts[0] ?? "", last: parts.slice(1).join(" ") };
+}
+
+/** The lead's message: their note, then the questions they asked in this chat. */
+export function leadMessage(lead: Lead, messages: ChatMessage[], page: string): string {
+  const questions = messages
+    .filter((m) => m.role === "user")
+    .slice(-8)
+    .map((m) => `- ${m.content.slice(0, 400)}`);
+  return [
+    "Follow-up request from the website chat (Ask Otto).",
+    `Page: ${page}`,
+    lead.note.trim() ? `\nTheir note:\n${lead.note.trim()}` : "",
+    questions.length ? `\nWhat they asked in the chat:\n${questions.join("\n")}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
