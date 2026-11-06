@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import LandingPage from "@/pages/LandingPage";
-import GHLChatWidget from "@/components/GHLChatWidget";
+import SiteChat from "@/components/chat/SiteChat";
 import ScrollToTop from "@/components/ScrollToTop";
 import SEO from "@/components/SEO";
 import RouteHead from "@/components/RouteHead";
@@ -43,24 +43,25 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <ReferralCapture />
+          <SiteChat />
           <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
-            <Route path="/" element={<><RouteHead /><GHLChatWidget /><LandingPage /></>} />
-            <Route path="/welcome" element={<><RouteHead override={{ robots: "noindex,nofollow" }} /><GHLChatWidget /><LandingPage /></>} />
-            <Route path="/about" element={<><RouteHead /><GHLChatWidget /><AboutPage /></>} />
-            <Route path="/privacy" element={<><RouteHead /><GHLChatWidget /><PrivacyPage /></>} />
-            <Route path="/terms" element={<><RouteHead /><GHLChatWidget /><TermsPage /></>} />
-            <Route path="/pricing" element={<><RouteHead /><GHLChatWidget /><PricingPage /></>} />
-            <Route path="/why-us" element={<><RouteHead /><GHLChatWidget /><WhyUsPage /></>} />
-            <Route path="/contact" element={<><RouteHead /><GHLChatWidget /><ContactPage /></>} />
-            <Route path="/features" element={<><RouteHead /><GHLChatWidget /><FeaturesPage /></>} />
-            <Route path="/help" element={<><RouteHead /><GHLChatWidget /><HelpCenterPage /></>} />
-            <Route path="/integrations" element={<><RouteHead /><GHLChatWidget /><IntegrationsMarketingPage /></>} />
-            <Route path="/mobile-app" element={<><RouteHead /><GHLChatWidget /><MobileAppPage /></>} />
+            <Route path="/" element={<><RouteHead /><LandingPage /></>} />
+            <Route path="/welcome" element={<><RouteHead override={{ robots: "noindex,nofollow" }} /><LandingPage /></>} />
+            <Route path="/about" element={<><RouteHead /><AboutPage /></>} />
+            <Route path="/privacy" element={<><RouteHead /><PrivacyPage /></>} />
+            <Route path="/terms" element={<><RouteHead /><TermsPage /></>} />
+            <Route path="/pricing" element={<><RouteHead /><PricingPage /></>} />
+            <Route path="/why-us" element={<><RouteHead /><WhyUsPage /></>} />
+            <Route path="/contact" element={<><RouteHead /><ContactPage /></>} />
+            <Route path="/features" element={<><RouteHead /><FeaturesPage /></>} />
+            <Route path="/help" element={<><RouteHead /><HelpCenterPage /></>} />
+            <Route path="/integrations" element={<><RouteHead /><IntegrationsMarketingPage /></>} />
+            <Route path="/mobile-app" element={<><RouteHead /><MobileAppPage /></>} />
             <Route path="/special-offer" element={<><SEO noindex /><SpecialOfferPage /></>} />
-            <Route path="/partners" element={<><RouteHead /><GHLChatWidget /><PartnersPage /></>} />
-            <Route path="/blog" element={<><GHLChatWidget /><BlogIndex /></>} />
-            <Route path="/blog/:slug" element={<><GHLChatWidget /><BlogPost /></>} />
+            <Route path="/partners" element={<><RouteHead /><PartnersPage /></>} />
+            <Route path="/blog" element={<><BlogIndex /></>} />
+            <Route path="/blog/:slug" element={<><BlogPost /></>} />
             <Route path="/ref/:code" element={<><SEO noindex /><ReferralLanding /></>} />
             {/* Everything else: programmatic SEO pages from content_pages, or NotFound */}
             <Route path="*" element={<ContentPageRoute />} />
